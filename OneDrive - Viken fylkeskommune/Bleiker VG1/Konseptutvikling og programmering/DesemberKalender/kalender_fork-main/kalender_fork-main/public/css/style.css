@@ -1,0 +1,276 @@
+:root {
+    /* Common properties */
+    --main-bg-color: #ff000079; /* Light gray background */
+    --header-footer-bg: #33333300; /* Dark background for header and footer */
+    --header-footer-text: #fff; /* White text color for header and footer */
+    --grid-border: #ddd; /* Border color for grid items */
+    --unopenable-bg: #ccc; /* Gray background for unopenable items */
+    --unopenable-text: #555; /* Darker text color for unopenable items */
+    --hover-bg: #e0e0e0; /* Light gray background on hover */
+    --red-theme: #BC1925;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url("../img/desktop_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.bow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--unopenable-bg); /* Unopenable color for the bow */
+    border-radius: 50%;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1; /* Ensure the bow is above the lid and ribbon */
+    background-color: green;
+}
+
+.bow::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #fff; /* Inner bow color */
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure the inner bow is above the outer bow */
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+/* Centered and styled footer */
+
+#date-display {
+    text-align: center;
+    color: white;
+    padding: 5px;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: var(--header-footer-bg);
+    color: var(--header-footer-text);
+    padding: 10px;
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+}
+
+
+header {
+    background-color: var(--header-footer-bg);
+    color: var(--header-footer-text);
+    padding: 10px;
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+}
+
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    grid-template-rows: repeat(4, 1fr); /* 4 rows */
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto; /* Center the grid */
+    width: 50%;
+    max-width: 90%; /* Adjust the max-width as needed */
+    margin-top: 10px; /* Adjust the top margin to reduce space under the footer */
+}
+
+.grid-item {
+    border: 1px solid var(--grid-border);
+    padding: -110px;
+    text-align: center;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative; /* Added for positioning */
+    background-color: var(--red-theme);
+}
+
+.grid-item:hover.openable,
+.grid-item:hover.openable .lid,
+.grid-item:hover.openable .ribbon,
+.grid-item:hover.openable .bow {
+    background-color: var(--hover-bg);
+}
+.grid-item-text {
+    position: relative;
+    z-index: 5; /* Adjust the z-index value as needed */
+    font-size: 30px;
+    margin-top: -10px; /* Adjust margin-top as needed to bring the text forward */
+}
+
+
+.lid {
+    position: absolute;
+    width: 110%;
+    height: 10%;
+    background-color: var(--unopenable-bg); /* Unopenable color for the lid */
+    top: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0; /* Ensure the lid is behind the bow and ribbon */
+    background-color: white;
+}
+
+.logo{
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    z-index: 5;
+    border-radius: 50%;
+    padding: 5px;
+    max-width: 10%;
+    max-height: 10%;
+}
+.openable1 {
+    background-color: var(--palette-1-bg);
+    color: var(--palette-1-text);
+    font-size: 30px;
+}
+
+.openable-lid1 {
+    background-color: var(--palette-1-lid-bg);
+}
+
+.openable-rib1 {
+    background-color: var(--palette-1-ribbon-bg);
+}
+
+.openable2 {
+    background-color: var(--palette-2-bg);
+    color: var(--palette-2-text);
+    font-size: 30px;
+}
+
+.openable-lid2 {
+    background-color: var(--palette-2-lid-bg);
+}
+
+.openable-rib2 {
+    background-color: var(--palette-2-ribbon-bg);
+}
+
+.openable3 {
+    background-color: var(--palette-3-bg);
+    color: var(--palette-3-text);
+    font-size: 30px;
+}
+
+.openable-lid3 {
+    background-color: var(--palette-3-lid-bg);
+}
+
+.openable-rib {
+    background-color: var(--ribbon-bg);
+}
+
+
+.openable-lid {
+    background-color: var(--lid-bg);
+}
+.openable-rib3 {
+    background-color: var(--palette-3-ribbon-bg);
+}
+
+#pad-bar {
+    padding: 5px;
+    background-color: #33333300;
+}
+
+#progress-bar {
+    z-index: 10;
+    background-color: #4caf50;
+    height: 20px;
+}
+
+#progress-display {
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+.ribbon {
+    position: absolute;
+    width: 90%;
+    height: 10px;
+    background-color: var(--unopenable-bg); /* Unopenable color for the ribbon */
+    top: 60;
+    rotate: 90deg;
+    z-index: 2;
+    background-color: white;
+}
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.sticky-header header, .sticky-header footer {
+    background-color: transparent;
+    color: var(--header-footer-text);
+    padding: 10px;
+    text-align: center;
+}
+
+.unopenable {
+    background-color: var(--unopenable-bg);
+    color: var(--unopenable-text);
+    cursor: not-allowed;
+    font-size: 30px;
+}
+.unopenable-rib {
+    background-color: var(--unopenable-bg);
+    color: var(--unopenable-text);
+    cursor: not-allowed;
+}
+.unopenable-lid {
+    background-color: var(--unopenable-bg);
+    color: var(--unopenable-text);
+    cursor: not-allowed;
+}
+
+
+@media only screen and (max-width: 600px) {
+    #grid-container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(8, 1fr); /* Adjust rows for smaller screens */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .logo {
+        display: none;
+    }
+}
+
+@media (pointer:coarse) {
+    /* custom css for "touch targets" */
+    .logo{
+        display: none;
+    }
+}
